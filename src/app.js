@@ -47,11 +47,20 @@ app.get('/weather', (req, res) => {
 });
 
 app.get('/help/*', (req, res) => {
-  res.send('Help article not found');
-})
+  res.render('404', {
+    title: 404,
+    name: 'Joshua Tu',
+    errMsg: 'Help article not found',
+  });
+});
 
 app.get('*', (req, res) => {
-  res.send('My 404 page');
+  // res.send('My 404 page');
+  res.render('404', {
+    title: 404,
+    name: 'Joshua Tu',
+    errMsg: 'Page not found.',
+  })
 });
 
 app.listen(3000, () => {
