@@ -10,4 +10,15 @@ fetch('http://localhost:3000/weather?address=!')
       console.log(data.forecast);
     }
   })
+});
+
+const weatherForm = document.querySelector('form');
+const search = document.querySelector('input');
+
+weatherForm.addEventListener('submit', evt => {
+  evt.preventDefault();
+
+  const location = search.value;
+
+  console.log(location);
 })
