@@ -10,11 +10,14 @@ const forecast = ({latitude, longitude} = {}, cb) => {
     } else if (res.body.error) {
       cb('Unable to find location. Try another search',undefined);
     } else {
-      const {location: {name, region, country}, current: {temperature, weather_descriptions}} = res.body;
+      const {location: {name, region, country}, current: {temperature, weather_descriptions, humidity, feelslike, uv_index}} = res.body;
       cb(undefined, {
         location: name + ', ' + region + ', ' + country,
         temperature: temperature + '℃',
         weather: weather_descriptions[0],
+        humidity,
+        feelslike,
+        uvIndex: uv_index,
       })
     }
   })

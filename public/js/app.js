@@ -4,6 +4,8 @@ const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
 const messageOne = document.querySelector('#message-1');
 const messageTwo = document.querySelector('#message-2');
+const messageThree = document.querySelector('#message-3');
+const messageFour = document.querySelector('#message-4');
 
 weatherForm.addEventListener('submit', evt => {
   evt.preventDefault();
@@ -12,6 +14,8 @@ weatherForm.addEventListener('submit', evt => {
 
   messageOne.innerHTML = 'Loading...';
   messageTwo.innerHTML = '';
+  messageThree.innerHTML = '';
+  messageFour.innerHTML = '';
 
   // localhost use
   // fetch(`http://localhost:3000/weather?address=${location}`)
@@ -23,9 +27,14 @@ weatherForm.addEventListener('submit', evt => {
       if (data.error) {
         messageOne.innerHTML = data.error;
         messageTwo.innerHTML = '';
+        messageThree.innerHTML = '';
+        messageFour.innerHTML = '';
       } else {
-        messageOne.innerHTML = 'Address: ' + data.forecast.location;
-        messageTwo.innerHTML = 'Weather condition: ' + data.forecast.temperature + ', ' + data.forecast.weather;
+        const { location, temperature, weather, humidity, feelslike, uvIndex } = data.forecast;
+        messageOne.innerHTML = 'Address: ' + location;
+        messageTwo.innerHTML = 'Weather condition: ' + weather;
+        messageThree.innerHTML = `Temperature: ${temperature}, feelslike ${feelslike}℃`;
+        messageFour.innerHTML = `Humidity: ${humidity}  UV Index: ${uvIndex}`;
       }
     })
   });
