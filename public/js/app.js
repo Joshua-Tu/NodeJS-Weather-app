@@ -34,7 +34,7 @@ weatherForm.addEventListener('submit', evt => {
         messageOne.innerHTML = 'Address: ' + location;
         messageTwo.innerHTML = 'Weather condition: ' + weather;
         messageThree.innerHTML = `Temperature: ${temperature}, feelslike ${feelslike}℃`;
-        messageFour.innerHTML = `Humidity: ${humidity}  UV Index: ${uvIndex}`;
+        messageFour.innerHTML = `Humidity: ${humidity}%  UV Index: ${uvIndex}`;
       }
     })
   });
