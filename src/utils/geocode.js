@@ -1,7 +1,8 @@
+require('dotenv').config();
 const request = require('request');
 
 const geocode = (address, cb) =>  {
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURI(address)}.json?access_token=pk.eyJ1Ijoiam9zaHVhdHUiLCJhIjoiY2s2NTIxd3pkMG5jajNmbHdmZmxhOTZ6MiJ9.3zdz7RsqcjUDM7KSV-3j0g&limit=1`;
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURI(address)}.json?access_token=${process.env.GEOCODE_TOKEN}&limit=1`;
   // {body: {features}} 就是把response给提前destructuring了
   request({url, json: true}, (err, {body: {features = {}}} = {}) => {
     if (err) {

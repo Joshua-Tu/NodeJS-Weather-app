@@ -1,8 +1,9 @@
+require('dotenv').config();
 const request = require('request');
 
 const forecast = ({latitude, longitude} = {}, cb) => {
   // 末尾的units=f是转为华氏温度，units=m转为摄氏温度
-  const url = `http://api.weatherstack.com/current?access_key=2d1dc0ffa1c151e0fd65ca1a9859d293&query=${latitude},${longitude}&units=m`;
+  const url = `http://api.weatherstack.com/current?access_key=${process.env.FORECAST_TOKEN}&query=${latitude},${longitude}&units=m`;
   request({url, json: true}, (err, res) => {
     if (err) {
       cb('Unable to connect to location services!', undefined);
